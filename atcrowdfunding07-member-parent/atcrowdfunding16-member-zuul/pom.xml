@@ -11,5 +11,14 @@
     <artifactId>atcrowdfunding16-member-zuul</artifactId>
 
     <name>atcrowdfunding16-member-zuul</name>
-
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
+        </dependency>
+    </dependencies>
 </project>

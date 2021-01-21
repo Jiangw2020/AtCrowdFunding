@@ -55,5 +55,11 @@
             <artifactId>atcrowdfunding05-common-util</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <!-- 为了能够使用工具类 -->
+        <dependency>
+            <groupId>jw.crowd</groupId>
+            <artifactId>atcrowdfunding05-common-util</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 </project>
