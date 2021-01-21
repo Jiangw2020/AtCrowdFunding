@@ -11,5 +11,10 @@
   <artifactId>atcrowdfunding09-member-entity</artifactId>
 
   <name>atcrowdfunding09-member-entity</name>
-
+  <dependencies>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+    </dependency>
+  </dependencies>
 </project>
