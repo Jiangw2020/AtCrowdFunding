@@ -11,4 +11,5 @@ public class CrowdConstant {
     public static final String MESSAGE_ACCESS_FORBIDEN = "请登录后再访问！";
     public static final String MESSAGE_LOGIN_ACCT_ALREADY_IN_USE = "该账户已被注册！";
     public static final String MESSAGE_ACCESS_DENIED = "无访问权限";
+    public static final String REDIS_CODE_PREFIX = "REDIS_CODE_PREFIX_";
 }

@@ -10,3 +10,10 @@ spring:
   thymeleaf:
     prefix: classpath:/templates/
     suffix: .html
+short:
+  message:
+    host: "https://intlsms.market.alicloudapi.com"
+    path: "/comms/sms/sendmsgall"
+    method: "post"
+    appCode: "aad14596b0814f028a940470c30528d8"
+    templateID: "0000000"

@@ -151,5 +151,6 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-core:5.1.8.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-jcl:5.1.8.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-compress:1.18" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-configuration-processor:2.1.6.RELEASE" level="project" />
   </component>
 </module>

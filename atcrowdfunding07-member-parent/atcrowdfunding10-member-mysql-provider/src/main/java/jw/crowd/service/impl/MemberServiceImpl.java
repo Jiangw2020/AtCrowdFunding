@@ -5,17 +5,17 @@ import jw.crowd.entity.po.MemberPOExample;
 import jw.crowd.entity.po.MemberPOExample.Criteria;
 import jw.crowd.mapper.MemberPOMapper;
 import jw.crowd.service.api.MemberService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 // 在类上使用@Transactional(readOnly = true)针对查询操作设置事务属性
 @Transactional(readOnly = true)
 @Service
 public class MemberServiceImpl implements MemberService {
-    @Autowired
+    @Resource
     private MemberPOMapper memberPOMapper;
 
     @Override
