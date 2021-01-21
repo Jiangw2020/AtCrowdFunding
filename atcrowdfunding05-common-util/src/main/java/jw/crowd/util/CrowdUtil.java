@@ -1,11 +1,15 @@
 package jw.crowd.util;
 
+import com.aliyun.api.gateway.demo.util.HttpUtils;
 import jw.crowd.constant.CrowdConstant;
+import org.apache.http.HttpResponse;
 
 import javax.servlet.http.HttpServletRequest;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CrowdUtil {
     /**
@@ -54,5 +58,75 @@ public class CrowdUtil {
             e.printStackTrace();
         }
         return null;
+    }
+    /** 给远程第三方短信接口发送请求把验证码发送到用户手机上
+     * 0000:成功		i005:业务异常		9999:系统异常		1999:服务异常
+     * 成功：返回验证码
+     * 失败：返回失败消息
+     *  */
+    public static ResultEntity<String> sendCodeByMessage(
+            String mobile,
+            //模板编号；测试用默认的：0000000
+            String templateID
+    ){
+        String host = "https://intlsms.market.alicloudapi.com";
+        String path = "/comms/sms/sendmsgall";
+        String method = "POST";
+        String appcode = "aad14596b0814f028a940470c30528d8";
+        Map<String, String> headers = new HashMap<String, String>();
+        //最后在header中的格式(中间是英文空格)为Authorization:APPCODE 83359fd73fe94948385f570e3c139105
+        headers.put("Authorization", "APPCODE " + appcode);
+        //根据API的要求，定义相对应的Content-Type
+        headers.put("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+        Map<String, String> querys = new HashMap<String, String>();
+        Map<String, String> bodys = new HashMap<String, String>();
+        //可选	短信下发状态回调通知地址（主动回调）
+        bodys.put("callbackUrl", "http://test.dev.esandcloud.com");
+        //可选	0: 默认通道（默认值） 1: 高质量通道
+        bodys.put("channel", "0");
+        //必选	手机号码，采用 e.164 标准，格式为+[国家或地区码][手机号]，例如：+8613700000000
+        bodys.put("mobile", mobile);
+        //必选	模板 ID, 登录https://openali.esandcloud.com申请
+        bodys.put("templateID", templateID);
+
+        //生成4位数验证码
+        StringBuilder sbd = new StringBuilder();
+        for(int i=0;i<4;i++) {
+            int rd = (int)(Math.random()*10);
+            sbd.append(rd);
+        }
+        String code = sbd.toString();
+        sbd.append(", 1");
+        String s = sbd.toString();
+        //可选	模板参数(多个参数用逗号分隔)
+        bodys.put("templateParamSet", s);
+
+        try {
+            /**
+             * 重要提示如下:
+             * HttpUtils请从
+             * https://github.com/aliyun/api-gateway-demo-sign-java/blob/master/src/main/java/com/aliyun/api/gateway/demo/util/HttpUtils.java
+             * 下载
+             *
+             * 相应的依赖请参照
+             * https://github.com/aliyun/api-gateway-demo-sign-java/blob/master/pom.xml
+             */
+            HttpResponse response = HttpUtils.doPost(host, path, method, headers, querys, bodys);
+            System.out.println(response.toString());
+            //获取response的body
+            //System.out.println(EntityUtils.toString(response.getEntity()));
+            //0000:成功		i005:业务异常		9999:系统异常		1999:服务异常
+            int statusCode = response.getStatusLine().getStatusCode();
+            String reasonPhrase = response.getStatusLine().getReasonPhrase();
+            if(statusCode==0000) {
+                //成功，返回验证码
+                return ResultEntity.successWithData(code);
+            }
+            //失败，返回原因
+            return ResultEntity.failed(reasonPhrase);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResultEntity.failed(e.getMessage());
+        }
     }
 }
