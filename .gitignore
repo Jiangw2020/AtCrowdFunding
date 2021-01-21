@@ -1,0 +1,17 @@
+# Project exclude paths
+/atcrowdfunding01-admin-parent/atcrowdfunding02-admin-webui/target/
+/atcrowdfunding01-admin-parent/atcrowdfunding03-admin-component/target/
+/atcrowdfunding01-admin-parent/atcrowdfunding04-admin-entity/target/
+/atcrowdfunding05-common-util/target/
+/atcrowdfunding06-common-reverse/target/
+/atcrowdfunding07-member-parent/atcrowdfunding08-member-eureka/target/
+/atcrowdfunding07-member-parent/atcrowdfunding09-member-entity/target/
+/atcrowdfunding07-member-parent/atcrowdfunding10-member-mysql-provider/target/
+/atcrowdfunding07-member-parent/atcrowdfunding11-member-redis-provider/target/
+/atcrowdfunding07-member-parent/atcrowdfunding12-member-authentication-consumer/target/
+/atcrowdfunding07-member-parent/atcrowdfunding13-member-project-consumer/target/
+/atcrowdfunding07-member-parent/atcrowdfunding14-member-order-consumer/target/
+/atcrowdfunding07-member-parent/atcrowdfunding15-member-pay-consumer/target/
+/atcrowdfunding07-member-parent/atcrowdfunding16-member-zuul/target/
+/atcrowdfunding07-member-parent/atcrowdfunding17-member-api/target/
+/atcrowdfunding07-member-parent/target/
