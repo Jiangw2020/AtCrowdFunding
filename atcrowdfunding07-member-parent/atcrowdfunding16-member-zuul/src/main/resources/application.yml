@@ -7,6 +7,10 @@ eureka:
 spring:
   application:
     name: at-crowd-zuul
+  redis:
+    host: 127.0.0.1
+  session:
+    store-type: redis
 zuul:
   ignored-services: "*"
   sensitive-headers: "*" # 在 Zuul 向其他微服务重定向时保持原本头信息（请求头、响应 头）

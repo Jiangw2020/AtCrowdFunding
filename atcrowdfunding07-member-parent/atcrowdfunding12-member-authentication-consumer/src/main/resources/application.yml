@@ -10,6 +10,10 @@ spring:
   thymeleaf:
     prefix: classpath:/templates/
     suffix: .html
+  redis:
+    host: 127.0.0.1
+  session:
+    store-type: redis
 short:
   message:
     host: "https://intlsms.market.alicloudapi.com"
@@ -20,3 +24,4 @@ short:
 ribbon:
   ReadTimeout: 10000
   ConnectTimeout: 10000
+
