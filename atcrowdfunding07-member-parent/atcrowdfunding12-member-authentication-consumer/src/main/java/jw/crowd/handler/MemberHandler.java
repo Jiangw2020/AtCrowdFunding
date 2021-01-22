@@ -34,7 +34,7 @@ public class MemberHandler {
     @RequestMapping("/auth/do/member/logout")
     public String memberLogin(HttpSession session){
         session.invalidate();
-        return "redirect:/";
+        return "redirect:http://localhost/";
     }
 
     @RequestMapping("/auth/do/member/login")
@@ -62,7 +62,7 @@ public class MemberHandler {
         }
         MemberLoginVO memberLoginVO = new MemberLoginVO(memberPO.getId(), memberPO.getUsername(), memberPO.getEmail());
         session.setAttribute(CrowdConstant.ATTR_NAME_LOGIN_MEMBER,memberLoginVO);
-        return "redirect:/auth/member/to/center/page";
+        return "redirect:http://localhost/auth/member/to/center/page";
     }
     @RequestMapping("/auth/do/member/register")
     public String memberRegister(MemberVO memberVO, ModelMap modelMap){
