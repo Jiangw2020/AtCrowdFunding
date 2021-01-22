@@ -17,3 +17,6 @@ short:
     method: "post"
     appCode: "aad14596b0814f028a940470c30528d8"
     templateID: "0000000"
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000

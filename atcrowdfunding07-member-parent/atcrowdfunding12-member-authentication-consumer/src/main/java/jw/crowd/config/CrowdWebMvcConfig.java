@@ -9,14 +9,14 @@ public class CrowdWebMvcConfig implements WebMvcConfigurer {
 
     public void addViewControllers(ViewControllerRegistry registry) {
         // 浏览器访问的地址
-        String urlPath = "/auth/member/to/reg/page.html";
+//        String urlPath = "/auth/member/to/reg/page";
 
         // 目标视图的名称，将来拼接“prefix: classpath:/templates/”、“suffix: .html”前后缀
-        String viewName = "member-reg";
+//        String viewName = "member-reg";
 
         //添加
-        registry.addViewController(urlPath).setViewName(viewName);
-
+        registry.addViewController("/auth/member/to/reg/page").setViewName("member-reg");
+        registry.addViewController("/auth/member/to/login/page").setViewName("member-login");
     }
 
 }

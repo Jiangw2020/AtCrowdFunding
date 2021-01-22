@@ -71,8 +71,7 @@ public class CrowdUtil {
             String mobile,
             String appCode,
             //模板编号；测试用默认的：0000000
-            String templateID
-    ){
+            String templateID){
 //        String host = "https://intlsms.market.alicloudapi.com";
 //        String path = "/comms/sms/sendmsgall";
 //        String method = "POST";
@@ -115,7 +114,7 @@ public class CrowdUtil {
              * https://github.com/aliyun/api-gateway-demo-sign-java/blob/master/pom.xml
              */
             HttpResponse response = HttpUtils.doPost(host, path, method, headers, querys, bodys);
-            System.out.println(response.toString());
+//            System.out.println(response.toString());
             //获取response的body
             //System.out.println(EntityUtils.toString(response.getEntity()));
             //statusCode为200:成功
