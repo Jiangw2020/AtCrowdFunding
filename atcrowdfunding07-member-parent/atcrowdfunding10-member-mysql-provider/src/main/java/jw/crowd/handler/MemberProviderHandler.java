@@ -29,17 +29,6 @@ public class MemberProviderHandler {
             return ResultEntity.failed(e.getMessage());
         }
     }
-//    @RequestMapping("/get/member/by/login/remote")
-//    ResultEntity<MemberPO> getMemberByLoginRemote(@RequestParam("loginacct")String loginacct){
-//        try {
-//            //如果查得到--正常
-//            MemberPO memberPO = memberService.getMemberByLoginService(loginacct);
-//            return ResultEntity.successWithData(memberPO);
-//        } catch (Exception e) {
-//            //如果查不到--报错
-//            return ResultEntity.failed(e.getMessage());
-//        }
-//    }
     @RequestMapping("/get/memberpo/by/login/acct/remote")
     public ResultEntity<MemberPO> getMemberPOByLoginAcctRemote(@RequestParam("loginacct") String loginacct) {
         try {

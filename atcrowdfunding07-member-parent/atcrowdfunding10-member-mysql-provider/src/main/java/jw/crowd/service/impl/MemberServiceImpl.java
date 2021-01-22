@@ -31,6 +31,9 @@ public class MemberServiceImpl implements MemberService {
         // 4.执行查询
         List<MemberPO> list = memberPOMapper.selectByExample(example);
         // 5.获取结果
+        if(list==null || list.size()==0){
+            return null;
+        }
         return list.get(0);
     }
     @Transactional(propagation = Propagation.REQUIRES_NEW,rollbackFor = Exception.class,readOnly = false)

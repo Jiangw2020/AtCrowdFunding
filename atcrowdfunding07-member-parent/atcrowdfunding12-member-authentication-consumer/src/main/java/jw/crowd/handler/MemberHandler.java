@@ -5,6 +5,7 @@ import jw.crowd.api.RedisRemoteService;
 import jw.crowd.config.ShortMessageProperties;
 import jw.crowd.constant.CrowdConstant;
 import jw.crowd.entity.po.MemberPO;
+import jw.crowd.entity.vo.MemberLoginVO;
 import jw.crowd.entity.vo.MemberVO;
 import jw.crowd.util.CrowdUtil;
 import jw.crowd.util.ResultEntity;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
@@ -29,6 +31,39 @@ public class MemberHandler {
     @Autowired
     RedisRemoteService redisRemoteService;
 
+    @RequestMapping("/auth/do/member/logout")
+    public String memberLogin(HttpSession session){
+        session.invalidate();
+        return "redirect:/";
+    }
+
+    @RequestMapping("/auth/do/member/login")
+    public String memberLogin(
+            @RequestParam("loginacct") String loginacct,
+            @RequestParam("userpswd") String userpswd,
+            ModelMap modelMap,
+            HttpSession session){
+        ResultEntity<MemberPO> resultEntity = mySQLRemoteService.getMemberPOByLoginAcctRemote(loginacct);
+        if(ResultEntity.FAILED.equals(resultEntity.getOperationResult())){
+            modelMap.addAttribute(CrowdConstant.ATTR_NAME_MESSAGE,resultEntity.getOperationMessage());
+            return "member-login";
+        }
+        MemberPO memberPO = resultEntity.getQueryData();
+        if(memberPO==null){
+            modelMap.addAttribute(CrowdConstant.ATTR_NAME_MESSAGE,CrowdConstant.MESSAGE_LOGIN_FAILED);
+            return "member-login";
+        }
+        String userpswdFromDB = memberPO.getUserpswd();
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        boolean matcheResult = passwordEncoder.matches(userpswd, userpswdFromDB);
+        if(!matcheResult){
+            modelMap.addAttribute(CrowdConstant.ATTR_NAME_MESSAGE,CrowdConstant.MESSAGE_LOGIN_FAILED);
+            return "member-login";
+        }
+        MemberLoginVO memberLoginVO = new MemberLoginVO(memberPO.getId(), memberPO.getUsername(), memberPO.getEmail());
+        session.setAttribute(CrowdConstant.ATTR_NAME_LOGIN_MEMBER,memberLoginVO);
+        return "redirect:/auth/member/to/center/page";
+    }
     @RequestMapping("/auth/do/member/register")
     public String memberRegister(MemberVO memberVO, ModelMap modelMap){
         // 1.获取用户输入的手机号
