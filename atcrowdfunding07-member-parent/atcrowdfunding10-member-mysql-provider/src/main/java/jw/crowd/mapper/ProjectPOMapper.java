@@ -2,6 +2,10 @@ package jw.crowd.mapper;
 
 import jw.crowd.entity.po.ProjectPO;
 import jw.crowd.entity.po.ProjectPOExample;
+import jw.crowd.entity.vo.DetailProjectVO;
+import jw.crowd.entity.vo.DetailReturnVO;
+import jw.crowd.entity.vo.PortalProjectVO;
+import jw.crowd.entity.vo.PortalTypeVO;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -32,4 +36,14 @@ public interface ProjectPOMapper {
     void insertTypeRelationship(@Param("typeIdList") List<Integer> typeIdList, @Param("projectId") Integer projectId);
 
     void insertTagRelationship(@Param("tagIdList") List<Integer> tagIdList, @Param("projectId") Integer projectId);
+
+    List<PortalProjectVO> selectPortalProjectVOList(Integer id);
+
+    List<PortalTypeVO> selectPortalTypeVOList();
+
+    DetailProjectVO selectDetailProjectVO(Integer projectId);
+
+    String selectDetailPicturePath(Integer id);
+
+    DetailReturnVO selectDeatailReturnVO(Integer id);
 }
