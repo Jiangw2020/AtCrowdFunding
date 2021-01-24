@@ -2,6 +2,7 @@ package jw.crowd.api;
 
 import jw.crowd.entity.po.MemberPO;
 import jw.crowd.entity.vo.DetailProjectVO;
+import jw.crowd.entity.vo.OrderProjectVO;
 import jw.crowd.entity.vo.PortalTypeVO;
 import jw.crowd.entity.vo.ProjectVO;
 import jw.crowd.util.ResultEntity;
@@ -17,12 +18,19 @@ import java.util.List;
 public interface MySQLRemoteService {
     @RequestMapping("/get/memberpo/by/login/acct/remote")
     ResultEntity<MemberPO> getMemberPOByLoginAcctRemote(@RequestParam("loginacct") String loginacct);
+
     @RequestMapping("save/member/remote")
     ResultEntity<String> saveMemberRemote(@RequestBody MemberPO memberPO);
+
     @RequestMapping("/save/project/vo/remote")
     ResultEntity<String> saveProjectVORemote(@RequestBody ProjectVO projectVO, @RequestParam("memberId") Integer memberId);
+
     @RequestMapping("/get/portal/type/project/data/remote")
     public ResultEntity<List<PortalTypeVO>> getPortalTypeProjectDataRemote();
+
     @RequestMapping("/get/project/detail/remote/{projectId}")
     public ResultEntity<DetailProjectVO> getDetailProjectVORemote(@PathVariable("projectId") Integer projectId);
+
+    @RequestMapping("/get/order/project/vo/remote")
+    ResultEntity<OrderProjectVO> getOrderProjectVORemote(@RequestParam("projectId") Integer projectId, @RequestParam("returnId") Integer returnId);
 }
