@@ -1,0 +1,10 @@
+ali:
+  pay:
+    alipay-public-key:
+    DAQABapp-id: 2016101800716558
+    charset: utf-8
+    gateway-url: https://openapi.alipaydev.com/gateway.do
+    merchant-private-key:
+    notify-url: http://xxx
+    return-url: http://xxx
+    sign-type: RSA2
