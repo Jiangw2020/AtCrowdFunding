@@ -40,7 +40,7 @@ public class PayHandler {
         logger.info("hello world");
         return "success";
     }
-
+    @ResponseBody
     @RequestMapping("/notify")
     public String notifyUrlMethod(HttpServletRequest request) throws UnsupportedEncodingException, AlipayApiException {
 

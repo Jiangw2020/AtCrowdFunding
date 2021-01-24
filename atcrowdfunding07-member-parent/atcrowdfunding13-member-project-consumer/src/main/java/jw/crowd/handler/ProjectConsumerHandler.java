@@ -1,4 +1,4 @@
-package jw.crowd.config.handler;
+package jw.crowd.handler;
 
 import jw.crowd.api.MySQLRemoteService;
 import jw.crowd.config.OSSProperties;
