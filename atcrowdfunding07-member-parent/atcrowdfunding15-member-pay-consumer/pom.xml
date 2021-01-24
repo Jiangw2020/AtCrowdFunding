@@ -1,12 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>atcrowdfunding07-member-parent</artifactId>
+        <groupId>jw.crowd</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <groupId>jw.crowd</groupId>
+    <artifactId>atcrowdfunding15-member-pay-consumer</artifactId>
+    <version>1.0-SNAPSHOT</version>
 
-  <groupId>jw.crowd</groupId>
-  <artifactId>atcrowdfunding15-member-pay-consumer</artifactId>
-  <version>1.0-SNAPSHOT</version>
+    <name>atcrowdfunding15-member-pay-consumer</name>
+    <dependencies>
+        <dependency>
+            <groupId>jw.crowd</groupId>
+            <artifactId>atcrowdfunding17-member-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <!-- OSS 客户端 SDK -->
+        <dependency>
+            <groupId>com.aliyun.oss</groupId>
+            <artifactId>aliyun-sdk-oss</artifactId>
+            <version>3.5.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+        </dependency>
 
-  <name>atcrowdfunding15-member-pay-consumer</name>
-
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+        <!-- 引入 springboot&redis 整合场景 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <!-- 引入 springboot&springsession 整合场景 -->
+        <dependency>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session-data-redis</artifactId>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.alipay.sdk/alipay-sdk-java -->
+        <dependency>
+            <groupId>com.alipay.sdk</groupId>
+            <artifactId>alipay-sdk-java</artifactId>
+            <version>3.3.49.ALL</version>
+        </dependency>
+    </dependencies>
 </project>

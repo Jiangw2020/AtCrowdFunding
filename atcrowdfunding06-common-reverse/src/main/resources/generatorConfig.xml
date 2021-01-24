@@ -43,8 +43,8 @@
         <table tableName="t_member_launch_info" domainObjectName="MemberLaunchInfoPO"/>
         <table tableName="t_return" domainObjectName="ReturnPO"/>
         <table tableName="t_member_confirm_info" domainObjectName="MemberConfirmInfoPO"/>-->
-        <table tableName="t_order_project" domainObjectName="OrderProjectPO"></table>
+<!--        <table tableName="t_order_project" domainObjectName="OrderProjectPO"></table>-->
         <table tableName="t_order" domainObjectName="OrderPO"></table>
-        <table tableName="t_address" domainObjectName="AddressPO"></table>
+<!--        <table tableName="t_address" domainObjectName="AddressPO"></table>-->
     </context>
 </generatorConfiguration>
