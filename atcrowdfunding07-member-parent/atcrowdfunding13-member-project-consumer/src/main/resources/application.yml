@@ -16,8 +16,8 @@ spring:
     store-type: redis
 aliyun:
   oss:
-    access-key-id: LTAI4
-    access-key-secret: 7
-    bucket-domain: http:
+    access-key-id: LTAI4GKTr7A2x
+    access-key-secret: 7bqohh0Rv
+    bucket-domain: http://jw2021
     bucket-name: jw2021
-    end-point: http://oss-cn-hangzhou.aliyuncs.com
+    end-point: http://oss-cn-han
